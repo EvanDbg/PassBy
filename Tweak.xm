@@ -505,6 +505,10 @@ static BOOL isUsingHeadphones()
 static BOOL isUsingWatch()
 {
     WCSession * wcs  = [WCSession defaultSession];
+    if (wcs) {
+    	wcs.delegate = self;
+	[wcs activateSession];
+    }
     return wcs ? [wcs isReachable] : NO;
 }
 
